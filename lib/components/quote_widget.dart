@@ -4,9 +4,8 @@ import 'package:reflectme/services/copy_text_to_clipboard.dart';
 
 class QuoteView extends StatelessWidget {
   final Quote quote;
-  final Size screenSize;
 
-  const QuoteView({required this.quote, required this.screenSize});
+  const QuoteView({required this.quote});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +62,7 @@ class PromptText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(25),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

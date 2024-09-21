@@ -103,7 +103,13 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
               child: Container(
                 color: Colors.transparent, // Make container transparent
-                child: page,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: SafeArea(
+                    bottom: false,
+                    child: page,
+                  ),
+                ),
               ),
             ),
             BottomNavBar(

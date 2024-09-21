@@ -1,8 +1,3 @@
-// Implement the journal screen with the following features:
-// - List of journal entries
-// - A daily quote
-// - today date, day of the week
-
 import 'package:flutter/material.dart';
 import 'package:reflectme/constants/calendar.dart';
 
@@ -15,20 +10,23 @@ class Today extends StatelessWidget {
     return Column(
       children: [
         Text(
+          weekDays[date.weekday - 1].toUpperCase(),
           style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Colors.indigo,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            color: Colors.indigo.shade700,
+            letterSpacing: 1.5,
           ),
-          weekDays[date.weekday - 1]
         ),
+        SizedBox(height: 4),
         Text(
+          '${date.day} ${months[date.month - 1].toUpperCase()}',
           style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Colors.indigo,
+            fontSize: 17,
+            fontWeight: FontWeight.w600,
+            color: Colors.indigo.shade900,
+            letterSpacing: 1,
           ),
-          '${date.day} ${months[date.month - 1]}'
         ),
       ],
     );
