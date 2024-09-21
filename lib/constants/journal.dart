@@ -168,7 +168,7 @@ final journalEntries = [
     mood: Mood.neutral,
   ),
   JournalEntry(
-    id: '6',
+    id: '8',
     entryType: JournalEntryType.moment,
     date: DateTime.now(),
     imageUrls: [
@@ -185,5 +185,45 @@ final journalEntries = [
       latitude: 33.7362,
       longitude: 77.2962,
     ),
+  ),
+  JournalEntry(
+    id: '9',
+    entryType: JournalEntryType.moment,
+    date: DateTime.now(),
+    imageUrls: [
+      'https://fastly.picsum.photos/id/368/536/354.jpg?hmac=2b0UU6Y-8XxkiRBhatgBJ-ni3aWJ5CcVVENpX-mEiIA',
+      'https://fastly.picsum.photos/id/699/536/354.jpg?hmac=LxV4my-lfpoTTliKKJsw-r1sJ1wkTRyeY_d1k7ZprYM',
+    ],
+    mood: Mood.other,
+    heartRate: 70,
+  ),
+  JournalEntry(
+    id: '9',
+    entryType: JournalEntryType.moment,
+    date: DateTime.now(),
+    imageUrls: [],
+    mood: Mood.other,
+    heartRate: 70,
+  ),
+  JournalEntry(
+    id: '10',
+    entryType: JournalEntryType.moment,
+    date: DateTime.now(),
+    imageUrls: [],
+    mood: Mood.other,
+    heartRate: 70,
+    sleepHours: 7.5,
+  ),
+  JournalEntry(
+    id: '11',
+    entryType: JournalEntryType.moment,
+    date: DateTime.now(),
+    imageUrls: [
+      'https://fastly.picsum.photos/id/368/536/354.jpg?hmac=2b0UU6Y-8XxkiRBhatgBJ-ni3aWJ5CcVVENpX-mEiIA',
+      'https://fastly.picsum.photos/id/699/536/354.jpg?hmac=LxV4my-lfpoTTliKKJsw-r1sJ1wkTRyeY_d1k7ZprYM',
+    ],
+    mood: Mood.other,
+    heartRate: 70,
+    steps: 10000,
   ),
 ];
