@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reflectme/components/no_data_placeholder.dart';
 import 'package:reflectme/components/quote_widget.dart';
 import 'package:reflectme/components/today.dart';
 import 'package:reflectme/constants/journal.dart';
@@ -23,7 +24,13 @@ class JournalScreen extends StatelessWidget {
         ),
         SizedBox(height: 15),
 
-        Expanded(
+        if (journalEntries.isEmpty)
+          NoDataPlaceholder(
+            message: 'Your journal await!\nCapture your first moment now.',
+            icon: Icons.edit_note,
+          )
+        else
+          Expanded(
             child: ListView.separated(
               itemCount: journalEntries.length,
               separatorBuilder: (context, index) => SizedBox(height: 25),
@@ -31,7 +38,7 @@ class JournalScreen extends StatelessWidget {
                 return JournalEntryWidget(journalEntry: journalEntries[index]);
               },
             ),
-        ),
+          ),
       ],
     );
   }

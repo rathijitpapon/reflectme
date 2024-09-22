@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:reflectme/components/prompt_widget.dart';
 import 'package:reflectme/components/quote_widget.dart';
-import 'package:reflectme/components/explore_view_segmented_control.dart';
+import 'package:reflectme/components/segmented_control.dart';
 import 'package:reflectme/constants/prompt.dart';
 import 'package:reflectme/constants/quote.dart';
 
 enum ExploreView { prompts, quotes }
 
-class Explore extends StatefulWidget {
-  const Explore({super.key});
+class ExploreScreen extends StatefulWidget {
+  const ExploreScreen({super.key});
 
   @override
-  State<Explore> createState() => _ExploreState();
+  State<ExploreScreen> createState() => _ExploreScreenState();
 }
 
-class _ExploreState extends State<Explore> {
+class _ExploreScreenState extends State<ExploreScreen> {
   ExploreView selectedExploreView = ExploreView.prompts;
 
-  void handleButtonPress(ExploreView exploreView) {
+  void handleViewChange(ExploreView exploreView) {
     setState(() {
       selectedExploreView = exploreView;
     });
@@ -29,9 +29,10 @@ class _ExploreState extends State<Explore> {
 
     return Column(
       children: [
-        ExploreViewSegmentedControl(
-          selectedExploreView: selectedExploreView,
-          handleButtonPress: handleButtonPress,
+        SegmentedControl<ExploreView>(
+          selectedValue: selectedExploreView,
+          values: ExploreView.values,
+          onValueChanged: handleViewChange,
         ),
         SizedBox(height: 30),
         

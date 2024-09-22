@@ -1,13 +1,9 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:reflectme/components/bottom_navbar.dart';
 import 'package:reflectme/screens/explore.dart';
-import 'package:reflectme/screens/favorites_page.dart';
+import 'package:reflectme/screens/insights.dart';
 import 'package:reflectme/screens/journal.dart';
-import 'package:reflectme/screens/generator_page.dart';
-
-// Documentation
+import 'package:reflectme/screens/history.dart';
 
 void main() {
   runApp(ReflectMe());
@@ -18,48 +14,25 @@ class ReflectMe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ReflectMeState(),
-      child: MaterialApp(
-        title: 'ReflectMe',
-        theme: ThemeData(
-          useMaterial3: true,
-          // Remove the colorScheme property
-        ),
-        home: Scaffold(
-          body: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Colors.blue.shade200, Colors.purple.shade200],
-              ),
+    return MaterialApp(
+      title: 'ReflectMe',
+      theme: ThemeData(
+        useMaterial3: true,
+        // Remove the colorScheme property
+      ),
+      home: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.blue.shade200, Colors.purple.shade200],
             ),
-            child: MyHomePage(),
           ),
+          child: MyHomePage(),
         ),
       ),
     );
-  }
-}
-
-class ReflectMeState extends ChangeNotifier {
-  var current = WordPair.random();
-
-  void getNext() {
-    current = WordPair.random();
-    notifyListeners();
-  }
-
-  var favorites = <WordPair>[];
-
-  void toggleFavorite() {
-    if (favorites.contains(current)) {
-      favorites.remove(current);
-    } else {
-      favorites.add(current);
-    }
-    notifyListeners();
   }
 }
 
@@ -87,11 +60,11 @@ class _MyHomePageState extends State<MyHomePage> {
       case 0:
         page = JournalScreen();
       case 1:
-        page = GeneratorPage();
+        page = HistoryScreen();
       case 3:
-        page = FavoritesPage();
+        page = InsightsScreen();
       case 4:
-        page = Explore();
+        page = ExploreScreen();
       default:
         throw Exception('No screen for $selectedIndex');
     }

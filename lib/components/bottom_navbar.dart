@@ -145,25 +145,26 @@ class BottomNavBar extends StatelessWidget {
 
   double _getIndicatorPosition(double totalWidth) {
     final itemWidth = totalWidth / 5;
-    final centerOfItem = itemWidth / 2;
+    final centerOfItem = itemWidth / 2 + 2.0;
     const dotWidth = 5.0;
-    var position = 0.0;
     
-    if (selectedIndex < 2) {
-      position = selectedIndex * itemWidth + centerOfItem - dotWidth / 2 + 4;
-    } else if (selectedIndex == 2) {
-      position =  totalWidth / 2 - dotWidth / 2;
-    } else {
-      position = (selectedIndex + 1) * itemWidth - centerOfItem - dotWidth / 2 - 3;
+    if (selectedIndex == 2) {
+      return totalWidth / 2 - dotWidth / 2;
     }
-
+    
+    final basePosition = selectedIndex < 2
+        ? (selectedIndex * itemWidth + centerOfItem)
+        : ((selectedIndex + 1) * itemWidth - centerOfItem);
+    
+    final edgeOffset = itemWidth * 0.1; // 10% of item width for edge offset
+    
     if (selectedIndex == 0) {
-      position += 8;
+      return basePosition - dotWidth / 2 + edgeOffset;
     } else if (selectedIndex == 4) {
-      position -= 8;
+      return basePosition - dotWidth / 2 - edgeOffset;
+    } else {
+      return basePosition - dotWidth / 2;
     }
-
-    return position;
   }
 
   IconData _getIcon(int index) {
