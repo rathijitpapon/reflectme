@@ -31,9 +31,41 @@ class JournalEntryWidget extends StatelessWidget {
               if (journalEntry.imageUrls.isNotEmpty)
                 _buildImageSection(context, imageHeight, checkInCards),
               _buildContentSection(context, checkInCards),
-              _buildDateTimeSection(context),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _buildJournalMood(),
+                  SizedBox(width: 10),
+                  _buildDateTimeSection(context),
+                ],
+              ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Container _buildJournalMood() {
+    return Container(
+      alignment: Alignment.center,
+      width: 33,
+      height: 33,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.blue[300]!, Colors.blue[100]!],
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      child: Text(
+        _getMoodIcon(journalEntry.mood),
+        style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
         ),
       ),
     );
@@ -207,16 +239,69 @@ class JournalEntryWidget extends StatelessWidget {
 
   Widget _buildDateTimeSection(BuildContext context) {
     return Align(
-      alignment: Alignment.bottomRight,
-      child: Text(
-        '${DateFormat('EEEE, MMMM d').format(journalEntry.date)} • ${DateFormat('h:mm a').format(journalEntry.date)}',
-        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-          color: Colors.indigo[700],
-          fontSize: 13,
-          fontWeight: FontWeight.w500,
-        ),
-        textAlign: TextAlign.right,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [     
+          RichText(
+            text: TextSpan(
+              style: DefaultTextStyle.of(context).style,
+              children: <TextSpan>[
+                TextSpan(
+                  text: '${journalEntry.date.day.toString().padLeft(2, '0')} ',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                TextSpan(
+                  text: DateFormat('E, MMM yyyy').format(journalEntry.date),
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.indigo[700],
+                  ),
+                ),
+                TextSpan(
+                  text: ' • ',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.indigo[700],
+                  ),
+                ),
+                TextSpan(
+                  text: DateFormat('h:mm a').format(journalEntry.date).toUpperCase(),
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.indigo[700],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
+  }
+
+  String _getMoodIcon(Mood? mood) {
+    if (mood == null) return '😀';
+
+    switch (mood) {
+      case Mood.happy:
+        return '😊';
+      case Mood.sad:
+        return '😢';
+      case Mood.angry:
+        return '😠';
+      case Mood.excited:
+        return '😍';
+      case Mood.neutral:
+        return '😐';
+      default:
+        return '😀';
+    }
   }
 }

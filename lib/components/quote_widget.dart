@@ -43,7 +43,7 @@ class QuoteView extends StatelessWidget {
           InkWell(
             borderRadius: BorderRadius.circular(15),
             onTap: () => copyTextToClipboard(context, '${quote.quote} - ${quote.author}'),
-            child: PromptText(quote: quote),
+            child: QuoteText(quote: quote),
           ),
         ],
       ),
@@ -51,8 +51,8 @@ class QuoteView extends StatelessWidget {
   }
 }
 
-class PromptText extends StatelessWidget {
-  const PromptText({
+class QuoteText extends StatelessWidget {
+  const QuoteText({
     super.key,
     required this.quote,
   });
