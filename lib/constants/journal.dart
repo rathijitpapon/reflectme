@@ -17,8 +17,9 @@ class Location {
 }
 
 enum JournalEntryType {
-  prompt,
+  reflection,
   moment,
+  recap,
 }
 
 class JournalEntry {
@@ -116,7 +117,7 @@ final journalEntries = [
   ),
   JournalEntry(
     id: '4',
-    entryType: JournalEntryType.prompt,
+    entryType: JournalEntryType.reflection,
     date: DateTime.now(),
     prompt: 'What was the best thing that happened to you today?',
     content: 'I spent the day with my friends and we had a lot of fun. I feel so happy and grateful for them. I feel so happy and grateful for them.',
@@ -160,7 +161,7 @@ final journalEntries = [
   ),
   JournalEntry(
     id: '7',
-    entryType: JournalEntryType.prompt,
+    entryType: JournalEntryType.reflection,
     date: DateTime.now(),
     prompt: 'What was the best thing that happened to you today?',
     content: 'I spent the day with my friends and we had a lot of fun. I feel so happy and grateful for them. I feel so happy and grateful for them. Also, I am so happy and grateful for them. Can you believe it? Please be happy and grateful for them. Otherwise you will be sad and disappointed in yourself.',
@@ -225,5 +226,37 @@ final journalEntries = [
     mood: Mood.other,
     heartRate: 70,
     steps: 10000,
+  ),
+  JournalEntry(
+    id: '12',
+    entryType: JournalEntryType.recap,
+    content: 'I spent the day with my friends and we had a lot of fun. I feel so happy and grateful for them. I feel so happy and grateful for them. Also, I am so happy and grateful for them. Can you believe it? Please be happy and grateful for them. Otherwise you will be sad and disappointed in yourself.',
+    date: DateTime.now(),
+    imageUrls: [
+      'https://fastly.picsum.photos/id/368/536/354.jpg?hmac=2b0UU6Y-8XxkiRBhatgBJ-ni3aWJ5CcVVENpX-mEiIA',
+      'https://fastly.picsum.photos/id/699/536/354.jpg?hmac=LxV4my-lfpoTTliKKJsw-r1sJ1wkTRyeY_d1k7ZprYM',
+    ],
+    mood: Mood.other,
+    heartRate: 70,
+    steps: 10000,
+    sleepHours: 7.5,
+    location: Location(
+      placeName: 'Zanskar Valley',
+      address: 'Zanskar, Ladakh, India',
+      latitude: 33.7362,
+      longitude: 77.2962,
+    ),
+  ),
+  JournalEntry(
+    id: '13',
+    entryType: JournalEntryType.recap,
+    content: 'I spent the day with my friends and we had a lot of fun. I feel so happy and grateful for them. I feel so happy and grateful for them. Also, I am so happy and grateful for them. Can you believe it? Please be happy and grateful for them. Otherwise you will be sad and disappointed in yourself.',
+    date: DateTime.now(),
+    imageUrls: [
+      'https://fastly.picsum.photos/id/368/536/354.jpg?hmac=2b0UU6Y-8XxkiRBhatgBJ-ni3aWJ5CcVVENpX-mEiIA',
+      'https://fastly.picsum.photos/id/699/536/354.jpg?hmac=LxV4my-lfpoTTliKKJsw-r1sJ1wkTRyeY_d1k7ZprYM',
+    ],
+    mood: Mood.other,
+    heartRate: 70,
   ),
 ];
