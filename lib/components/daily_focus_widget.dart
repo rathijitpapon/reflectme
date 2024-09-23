@@ -21,13 +21,15 @@ class DailyFocusWidget extends StatelessWidget {
         padding: EdgeInsets.all(20),
         color: Colors.grey[250],
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               dailyFocus.icon,
               color: Colors.deepPurple.shade500,
               size: 28,
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 10),
 
             Text(
               dailyFocus.prompt,

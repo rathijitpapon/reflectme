@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reflectme/components/bottom_navbar.dart';
+import 'package:reflectme/components/top_app_bar.dart';
 import 'package:reflectme/screens/explore.dart';
 import 'package:reflectme/screens/insights.dart';
 import 'package:reflectme/screens/journal.dart';
@@ -42,7 +43,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var selectedIndex = 0; 
+  var selectedIndex = 0;
+  final name = 'Rathijit';
+  final profileImageUrl = 'https://avatars.githubusercontent.com/u/1024025?v=4';
 
   void handleNavbarIndexChange(int index) {
     setState(() {
@@ -73,14 +76,25 @@ class _MyHomePageState extends State<MyHomePage> {
         return Column(
           children: [
             Expanded(
-              child: Container(
-                color: Colors.transparent, // Make container transparent
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: SafeArea(
-                    bottom: false,
-                    child: page,
-                  ),
+              child: SafeArea(
+                bottom: false,
+                child: Column(
+                  children: [
+                    TopAppBar(
+                      name: name,
+                      profileImageUrl: profileImageUrl,
+                    ),
+                    SizedBox(height: 15),
+                    Expanded(
+                      child: Container(
+                        color: Colors.transparent,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: page,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

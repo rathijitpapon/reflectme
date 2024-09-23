@@ -13,14 +13,14 @@ class DailyFocus {
 final scheduledFocuses = [
   DailyFocus(
     prompt: 'What is your top priority for today?',
-    startTime: TimeOfDay(hour: 6, minute: 0),
-    endTime: TimeOfDay(hour: 9, minute: 0),
+    startTime: TimeOfDay(hour: 3, minute: 0),
+    endTime: TimeOfDay(hour: 10, minute: 0),
     icon: Icons.wb_sunny,
     label: 'Morning Goals',
   ),
   DailyFocus(
     prompt: 'How will you make today great?',
-    startTime: TimeOfDay(hour: 9, minute: 0),
+    startTime: TimeOfDay(hour: 10, minute: 0),
     endTime: TimeOfDay(hour: 12, minute: 0),
     icon: IconData(0x1F31E, fontFamily: 'EmojiOne'),
     label: 'Mid-Morning Reflection',

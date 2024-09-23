@@ -7,28 +7,30 @@ class Today extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DateTime date = DateTime.now();
-    return Column(
-      children: [
-        Text(
-          weekDays[date.weekday - 1].toUpperCase(),
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: Colors.indigo.shade700,
-            letterSpacing: 1.5,
+    return Text.rich(
+      TextSpan(
+        children: [
+          TextSpan(
+            text: weekDays[date.weekday - 1].toUpperCase(),
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.indigo.shade800,
+              letterSpacing: 1.2,
+            ),
           ),
-        ),
-        SizedBox(height: 4),
-        Text(
-          '${date.day} ${months[date.month - 1].toUpperCase()}',
-          style: TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.w600,
-            color: Colors.indigo.shade900,
-            letterSpacing: 1,
+          TextSpan(
+            text: ', ${date.day} ${months[date.month - 1].toUpperCase()}',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Colors.indigo.shade700,
+              letterSpacing: 0.8,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
+      textAlign: TextAlign.center,
     );
   }
 }

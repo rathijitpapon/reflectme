@@ -54,24 +54,23 @@ class _JournalScreenState extends State<JournalScreen> {
     return Column(
       children: [
         Today(),
-        SizedBox(height: 20),
+        SizedBox(height: 10),
 
         Expanded(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 QuoteView(quote: quotes[0]),
-                SizedBox(height: 15),
+                SizedBox(height: 10),
 
                 _buildSectionLabel(label: 'Daily Focus'),
                 SizedBox(height: 10),
-                _buildDailyFocus(),
-                SizedBox(height: 10),
+                ..._buildDailyFocus(),
                 DailyFocusWidget(dailyFocus: dailyFocuses[0]),
-                SizedBox(height: 25),
+                SizedBox(height: 20),
 
                 _buildSectionLabel(label: 'Today\'s Moments'),
-                SizedBox(height: 10),
+                SizedBox(height: 15),
                 _buildJournalEntries(),
               ],
             ),
@@ -100,9 +99,9 @@ class _JournalScreenState extends State<JournalScreen> {
     );
   }
 
-  Widget _buildDailyFocus() {
+  List<Widget> _buildDailyFocus() {
     DateTime now = DateTime.now().toLocal();
-    Widget promptWidget = SizedBox.shrink();
+    List<Widget> promptWidget = [];
 
     for (var element in scheduledFocuses) {
       if (element.startTime == null || element.endTime == null) {
@@ -114,8 +113,8 @@ class _JournalScreenState extends State<JournalScreen> {
       int endMinutes = element.endTime!.hour * 60 + element.endTime!.minute;
 
       if (currentMinutes >= startMinutes && currentMinutes <= endMinutes) {
-        promptWidget = DailyFocusWidget(dailyFocus: element);
-        break;
+        promptWidget.add(DailyFocusWidget(dailyFocus: element));
+        promptWidget.add(SizedBox(height: 10));
       }
     }
 
