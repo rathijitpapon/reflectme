@@ -33,6 +33,10 @@ class _ExploreScreenState extends State<ExploreScreen> {
           selectedValue: selectedExploreView,
           values: ExploreView.values,
           onValueChanged: handleViewChange,
+          iconMap: {
+            ExploreView.prompts: Icons.question_answer,
+            ExploreView.quotes: Icons.format_quote,
+          },
         ),
         SizedBox(height: 30),
         

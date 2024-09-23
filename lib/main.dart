@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       name: name,
                       profileImageUrl: profileImageUrl,
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 10),
                     Expanded(
                       child: Container(
                         color: Colors.transparent,

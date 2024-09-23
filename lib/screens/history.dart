@@ -57,15 +57,20 @@ class _HistoryScreenState extends State<HistoryScreen> {
           selectedValue: selectedHistoryView,
           values: HistoryView.values,
           onValueChanged: handleViewChange,
+          iconMap: {
+            HistoryView.recap: Icons.summarize,
+            HistoryView.moments: Icons.message,
+            HistoryView.focus: Icons.lightbulb_outline,
+          },
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 10),
 
         DateRangePicker(
           initialDateRange: selectedDateRange,
           initialDateRangeOption: initialDateRangeOption,
           onDateRangeChange: handleDateRangeChange,
         ),
-        SizedBox(height: 15),
+        SizedBox(height: 20),
 
         if (selectedHistoryView == HistoryView.recap)
           _buildRecaps(),

@@ -58,7 +58,7 @@ class _DateRangePickerState extends State<DateRangePicker> {
     return Card(
       child: Container(
         alignment: Alignment.center,
-        width: _selectedOption == DateRangeOption.customRange ? 260 : 200,
+        width: _selectedOption == DateRangeOption.customRange ? 240 : 180,
         height: _selectedOption == DateRangeOption.customRange ? 100 : 50,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
