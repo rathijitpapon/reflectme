@@ -56,7 +56,7 @@ class JournalEntryWidget extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Colors.blue[300]!, Colors.blue[100]!],
+          colors: [Colors.blue[600]!, Colors.blue[400]!],
         ),
         borderRadius: BorderRadius.circular(50),
       ),

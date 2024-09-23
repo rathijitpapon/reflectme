@@ -45,7 +45,6 @@ class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0; 
 
   void handleNavbarIndexChange(int index) {
-    print(index);
     setState(() {
       if (index != 2) {
         selectedIndex = index;

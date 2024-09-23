@@ -26,11 +26,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
     end: DateTime.now(),
   );
   List<JournalEntry> moments = [];
-  List<JournalEntry> reflections = [];
+  List<JournalEntry> focuses = [];
   List<JournalEntry> recaps = [];
 
   void handleDateRangeChange(DateTimeRange dateRange) {
-    print('Date range changed to: $dateRange');
     setState(() {
       selectedDateRange = dateRange;
     });
@@ -46,7 +45,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   void initState() {
     super.initState();
     moments = journalEntries.where((entry) => entry.entryType == JournalEntryType.moment).toList();
-    reflections = journalEntries.where((entry) => entry.entryType == JournalEntryType.reflection).toList();
+    focuses = journalEntries.where((entry) => entry.entryType == JournalEntryType.focus).toList();
     recaps = journalEntries.where((entry) => entry.entryType == JournalEntryType.recap).toList();
   }
 
@@ -73,7 +72,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         if (selectedHistoryView == HistoryView.moments)
           _buildMoments(),
         if (selectedHistoryView == HistoryView.focus)
-          _buildReflections(),
+          _buildFocuses(),
       ],
     );
   }
@@ -97,19 +96,19 @@ class _HistoryScreenState extends State<HistoryScreen> {
     }
   }
 
-  Widget _buildReflections() {
-    if (reflections.isEmpty) {
+  Widget _buildFocuses() {
+    if (focuses.isEmpty) {
       return NoDataPlaceholder(
-        message: 'Your journey awaits!\nWrite your first reflection now.',
+        message: 'Your journey awaits!\nWrite your first focus now.',
         icon: Icons.edit_note,
       );
     } else {
       return Expanded(
         child: ListView.separated(
-          itemCount: reflections.length,
+          itemCount: focuses.length,
           separatorBuilder: (context, index) => SizedBox(height: 25),
           itemBuilder: (context, index) {
-            return JournalEntryWidget(journalEntry: reflections[index]);
+            return JournalEntryWidget(journalEntry: focuses[index]);
           },
         ),
       );
@@ -119,7 +118,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   Widget _buildRecaps() {
     if (recaps.isEmpty) {
       return NoDataPlaceholder(
-        message: 'Your recaps awaits!\nComplete writing about your first day.',
+        message: 'Your recaps awaits!\nComplete journaling your first day.',
         icon: Icons.edit_note,
       );
     } else {

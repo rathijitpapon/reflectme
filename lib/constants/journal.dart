@@ -1,3 +1,53 @@
+import 'package:flutter/material.dart';
+
+class DailyFocus {
+  final String prompt;
+  final TimeOfDay? startTime;  
+  final TimeOfDay? endTime;
+  final IconData icon;
+  final String label;
+
+  DailyFocus({required this.prompt, this.startTime, this.endTime, required this.icon, required this.label});
+}
+
+final scheduledFocuses = [
+  DailyFocus(
+    prompt: 'What is your top priority for today?',
+    startTime: TimeOfDay(hour: 6, minute: 0),
+    endTime: TimeOfDay(hour: 9, minute: 0),
+    icon: Icons.wb_sunny,
+    label: 'Morning Goals',
+  ),
+  DailyFocus(
+    prompt: 'How will you make today great?',
+    startTime: TimeOfDay(hour: 9, minute: 0),
+    endTime: TimeOfDay(hour: 12, minute: 0),
+    icon: IconData(0x1F31E, fontFamily: 'EmojiOne'),
+    label: 'Mid-Morning Reflection',
+  ),
+  DailyFocus(
+    prompt: 'What progress have you made on your goals?',
+    startTime: TimeOfDay(hour: 12, minute: 0),
+    endTime: TimeOfDay(hour: 16, minute: 0),
+    icon: IconData(0x1F31E, fontFamily: 'EmojiOne'),
+    label: 'Afternoon Check-In',
+  ),
+  DailyFocus(
+    prompt: 'What are your plans for the evening?',
+    startTime: TimeOfDay(hour: 16, minute: 0),
+    endTime: TimeOfDay(hour: 20, minute: 0),
+    icon: IconData(0x1F306, fontFamily: 'EmojiOne'),
+    label: 'Evening Planning',
+  ),
+  DailyFocus(
+    prompt: 'What did you achieve today?',
+    startTime: TimeOfDay(hour: 20, minute: 0),
+    endTime: TimeOfDay(hour: 24, minute: 0),
+    icon: Icons.bedtime,
+    label: 'Nightly Reflection',
+  ),
+];
+
 enum Mood {
   happy,
   sad,
@@ -17,7 +67,7 @@ class Location {
 }
 
 enum JournalEntryType {
-  reflection,
+  focus,
   moment,
   recap,
 }
@@ -117,7 +167,7 @@ final journalEntries = [
   ),
   JournalEntry(
     id: '4',
-    entryType: JournalEntryType.reflection,
+    entryType: JournalEntryType.focus,
     date: DateTime.now(),
     prompt: 'What was the best thing that happened to you today?',
     content: 'I spent the day with my friends and we had a lot of fun. I feel so happy and grateful for them. I feel so happy and grateful for them.',
@@ -161,7 +211,7 @@ final journalEntries = [
   ),
   JournalEntry(
     id: '7',
-    entryType: JournalEntryType.reflection,
+    entryType: JournalEntryType.focus,
     date: DateTime.now(),
     prompt: 'What was the best thing that happened to you today?',
     content: 'I spent the day with my friends and we had a lot of fun. I feel so happy and grateful for them. I feel so happy and grateful for them. Also, I am so happy and grateful for them. Can you believe it? Please be happy and grateful for them. Otherwise you will be sad and disappointed in yourself.',
