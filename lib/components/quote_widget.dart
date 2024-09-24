@@ -10,7 +10,7 @@ class QuoteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 15),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -32,8 +32,8 @@ class QuoteView extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: 15,
-            left: 15,
+            top: 10,
+            left: 10,
             child: Icon(
               Icons.format_quote,
               size: 30,

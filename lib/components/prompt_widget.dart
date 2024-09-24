@@ -79,9 +79,10 @@ class PromptText extends StatelessWidget {
           padding: EdgeInsets.all(16),
           child: Text(
             promptText,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
               color: Theme.of(context).colorScheme.onSurface,
               height: 1.5,
+              letterSpacing: 1,
             ),
           ),
         ),
