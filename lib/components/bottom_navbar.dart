@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reflectme/screens/editable_journal_entry.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
@@ -29,10 +30,10 @@ class BottomNavBar extends StatelessWidget {
               end: Alignment.bottomRight,
               colors: [Color(0xFFE2E1F3), Color(0xFFD1DCFF)],
             ),
-            // borderRadius: const BorderRadius.only(
-            //   topLeft: Radius.circular(20),
-            //   topRight: Radius.circular(20),
-            // ),
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
+            ),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
@@ -71,7 +72,7 @@ class BottomNavBar extends StatelessWidget {
         Positioned(
           top: -10, // Changed from -20 to -15
           left: size.width / 2 - actionButtonSize / 2,
-          child: _buildActionButton(actionButtonSize),
+          child: _buildActionButton(actionButtonSize, context),
         ),
       ],
     );
@@ -94,11 +95,11 @@ class BottomNavBar extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButton(double size) {
+  Widget _buildActionButton(double size, BuildContext context) {
     final bool isSelected = selectedIndex == 2;
 
     return GestureDetector(
-      onTap: () => handleNavbarIndexChange(2),
+      onTap: () => _showEditableJournal(context),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
         width: size,
@@ -128,7 +129,7 @@ class BottomNavBar extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () => handleNavbarIndexChange(2),
+            onTap: () => _showEditableJournal(context),
             borderRadius: BorderRadius.circular(20),
             splashColor: Colors.white.withOpacity(0.3),
             highlightColor: Colors.white.withOpacity(0.1),
@@ -140,6 +141,17 @@ class BottomNavBar extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void _showEditableJournal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        return EditableJournalEntry();
+      },
     );
   }
 

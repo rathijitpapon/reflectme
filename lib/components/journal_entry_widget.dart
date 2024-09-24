@@ -20,28 +20,26 @@ class JournalEntryWidget extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       margin: EdgeInsets.zero,
       child: Container(
+        padding: const EdgeInsets.all(15),
         decoration: _buildCardDecoration(),
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _buildPromptSection(context),
-              _buildCheckInSection(context, checkInCards),
-              if (journalEntry.imageUrls.isNotEmpty)
-                _buildImageSection(context, imageHeight, checkInCards),
-              _buildContentSection(context, checkInCards),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  _buildJournalMood(),
-                  SizedBox(width: 10),
-                  _buildDateTimeSection(context),
-                ],
-              ),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _buildPromptSection(context),
+            _buildCheckInSection(context, checkInCards),
+            if (journalEntry.imageUrls.isNotEmpty)
+              _buildImageSection(context, imageHeight, checkInCards),
+            _buildContentSection(context, checkInCards),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _buildJournalMood(),
+                SizedBox(width: 10),
+                _buildDateTimeSection(context),
+              ],
+            ),
+          ],
         ),
       ),
     );

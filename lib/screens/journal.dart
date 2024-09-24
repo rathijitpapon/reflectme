@@ -65,7 +65,7 @@ class _JournalScreenState extends State<JournalScreen> {
 
                 _buildSectionLabel(label: 'Daily Focus'),
                 SizedBox(height: 10),
-                ..._buildDailyFocus(),
+                ..._buildScheduledFocus(),
                 DailyFocusWidget(dailyFocus: dailyFocuses[0]),
                 SizedBox(height: 20),
 
@@ -99,7 +99,7 @@ class _JournalScreenState extends State<JournalScreen> {
     );
   }
 
-  List<Widget> _buildDailyFocus() {
+  List<Widget> _buildScheduledFocus() {
     DateTime now = DateTime.now().toLocal();
     List<Widget> promptWidget = [];
 
