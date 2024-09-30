@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reflectme/components/bottom_navbar.dart';
 import 'package:reflectme/components/top_app_bar.dart';
 import 'package:reflectme/screens/explore.dart';
-import 'package:reflectme/screens/insights.dart';
+import 'package:reflectme/screens/copilot.dart';
 import 'package:reflectme/screens/journal.dart';
 import 'package:reflectme/screens/history.dart';
 
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         page = HistoryScreen();
       case 3:
-        page = InsightsScreen();
+        page = CopilotScreen();
       case 4:
         page = ExploreScreen();
       default:

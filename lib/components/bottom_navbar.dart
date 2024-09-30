@@ -99,7 +99,7 @@ class BottomNavBar extends StatelessWidget {
     final bool isSelected = selectedIndex == 2;
 
     return GestureDetector(
-      onTap: () => _showEditableJournal(context),
+      onTap: () => showEditableJournal(context),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
         width: size,
@@ -129,7 +129,7 @@ class BottomNavBar extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () => _showEditableJournal(context),
+            onTap: () => showEditableJournal(context),
             borderRadius: BorderRadius.circular(20),
             splashColor: Colors.white.withOpacity(0.3),
             highlightColor: Colors.white.withOpacity(0.1),
@@ -141,17 +141,6 @@ class BottomNavBar extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  void _showEditableJournal(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (BuildContext context) {
-        return EditableJournalEntry();
-      },
     );
   }
 
@@ -188,7 +177,7 @@ class BottomNavBar extends StatelessWidget {
       case 2:
         return Icons.add;
       case 3:
-        return Icons.insights;
+        return Icons.messenger;
       case 4:
         return Icons.travel_explore;
       default:
